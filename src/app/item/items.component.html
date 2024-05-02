@@ -1,11 +1,39 @@
-<ActionBar title="nativescript-camera-plus" class="action-bar"> </ActionBar>
-<StackLayout class="p-20">
-  <ScrollView class="h-full">
+<!-- <ActionBar title="nativescript-camera-plus" class="action-bar"> </ActionBar> -->
+<!-- <GridLayout> -->
+<CameraPlus
+  #camP
+  debug="false"
+  confirmRetakeText="RETAKE!"
+  confirmSaveText="CONFIRM!"
+  enableVideo="false"
+  galleryPickerMode="single"
+  showCaptureIcon="true"
+  showFlashIcon="false"
+  showGalleryIcon="true"
+  showToggleIcon="false"
+  (loaded)="cameraLoadedEvent($event)"
+  (imagesSelectedEvent)="imagesSelectedEvent($event)"
+  (photoCapturedEvent)="photoCapturedEvent($event)"
+  (toggleCameraEvent)="toggleCameraEvent($event)"
+>
+  <Label
+    style="
+      font-size: 24px;
+      background-color: white;
+      text-align: center;
+      border-radius: 15%;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    "
+    [text]="today | date : 'MM/dd/yy'"
+    width="125"
+    height="50"
+  ></Label>
+</CameraPlus>
+
+<!-- <ScrollView class="h-full">
     <GridLayout rows="400, auto, *" style="background-color: orange">
       <CameraPlus
         #camP
-        height="200"
-        width="200"
         debug="true"
         confirmRetakeText="RETAKE!"
         confirmSaveText="CONFIRM!"
@@ -20,7 +48,6 @@
         (photoCapturedEvent)="photoCapturedEvent($event)"
         (toggleCameraEvent)="toggleCameraEvent($event)"
       >
-        <!-- Overlay -->
         <GridLayout rows="*, auto, *" columns="*, auto, *" *ngIf="showOverlay">
           <GridLayout colSpan="3" class="bg-overlay"></GridLayout>
           <GridLayout row="1" class="bg-overlay"></GridLayout>
@@ -49,7 +76,6 @@
         </GridLayout>
       </CameraPlus>
 
-      <!-- Image Preview -->
       <GridLayout
         row="1"
         rows="auto, auto"
@@ -67,22 +93,21 @@
         ></Image>
       </GridLayout>
 
-      <!-- Test Buttons -->
       <GridLayout row="2" rows="auto, auto, auto, auto, auto" columns="*, *">
-        <!-- <Button
+        <Button
           text="Record Video"
           (tap)="recordDemoVideo()"
           row="0"
           col="0"
           class="btn btn-primary"
-        ></Button> -->
-        <!-- <Button
+        ></Button>
+        <Button
           text="Stop Recording"
           (tap)="stopRecordingDemoVideo()"
           row="0"
           col="1"
           class="btn btn-primary"
-        ></Button> -->
+        ></Button>
         <Button
           text="Take Pic"
           (tap)="takePicFromCam()"
@@ -104,13 +129,13 @@
           col="0"
           class="btn btn-primary"
         ></Button>
-        <!-- <Button
+        <Button
           text="Open Library"
           (tap)="openCamPlusLibrary()"
           row="2"
           col="1"
           class="btn btn-primary"
-        ></Button> -->
+        ></Button>
         <Button
           text="Toggle Overlay"
           (tap)="toggleOverlay()"
@@ -120,5 +145,5 @@
         ></Button>
       </GridLayout>
     </GridLayout>
-  </ScrollView>
-</StackLayout>
+  </ScrollView> -->
+<!-- </GridLayout> -->

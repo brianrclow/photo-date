@@ -1,4 +1,10 @@
-import { Component, ElementRef, NgZone, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  NgZone,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { ImageAsset, ImageSource, isAndroid } from "@nativescript/core";
 import {
   CameraLoadedEvent,
@@ -7,6 +13,9 @@ import {
   PhotoCapturedEvent,
   ToggleCameraEvent,
 } from "@nstudio/nativescript-camera-plus";
+
+import { registerElement } from "@nativescript/angular";
+registerElement("CameraPlus", () => CameraPlus);
 import * as permission from "@nativescript-community/perms";
 
 @Component({
@@ -20,6 +29,13 @@ export class ItemsComponent {
   public showOverlay = false;
   public overlayChanged = 0;
   public cam: CameraPlus;
+
+  public today = new Date();
+
+  static {
+    // CameraPlus.defaultCamera = CameraPlusConstants.defaultCamera; // 'rear' or 'front'
+    CameraPlus.defaultCamera === "front";
+  }
 
   constructor(private zone: NgZone) {}
 
@@ -35,11 +51,21 @@ export class ItemsComponent {
 
     this.logCamEvent("CameraPlus.cameraLoadedEvent", event);
 
-    this.cam = <CameraPlus>this.camPlus.nativeElement;
-    // this.cam = event.object;
+    // this.cam = <CameraPlus>this.camPlus.nativeElement;
+    this.cam = event.object;
 
     console.log("this.cam");
     console.log(this.cam);
+
+    console.log("this.cam.getCurrentCamera");
+
+    if (this.cam.getCurrentCamera() === "rear") {
+      // this.cam.toggleCamera();
+      console.log("REAR");
+      // setTimeout(() => {
+      //   this.cam.toggleCamera();
+      // }, 1000);
+    }
 
     (async () => {
       let result = await permission.check("camera");
