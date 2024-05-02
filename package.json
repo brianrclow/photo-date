@@ -12,18 +12,21 @@
     "@angular/platform-browser": "~17.3.0",
     "@angular/platform-browser-dynamic": "~17.3.0",
     "@angular/router": "~17.3.0",
+    "@nativescript-community/perms": "^2.3.3",
     "@nativescript/angular": "^17.0.0",
-    "@nativescript/core": "~8.7.0",
+    "@nativescript/core": "8.7.2",
     "@nativescript/theme": "~3.0.2",
+    "@nstudio/nativescript-camera-plus": "5.0.0-alpha.4",
     "rxjs": "~7.8.0",
     "zone.js": "~0.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~17.3.0",
     "@angular/compiler-cli": "~17.3.0",
-    "@nativescript/types": "~8.7.0",
-    "@nativescript/webpack": "~5.0.19",
-    "@ngtools/webpack": "~17.3.0",
+    "@nativescript/ios": "8.7.1",
+    "@nativescript/types": "8.7.0",
+    "@nativescript/webpack": "5.0.21",
+    "@ngtools/webpack": "17.3.6",
     "typescript": "~5.4.0"
   }
 }
